@@ -12,6 +12,6 @@ Android Accelerometer Sensor Implementation
 
 Android Accelerometer Sensor with TextView Implementation
 
-Adding The Two Hand Gestures To The Android Accelerometer Sensor
+Adding The Two Hand Gestures To The Android Accelerometer Sensor Using Hand Motion Detection Feature
 
-Plotting the Android Acclerometer Sensor Data Using MPAndroidChart Library
+Plotting the Android Accelerometer Sensor Data Using MPAndroidChart Library
