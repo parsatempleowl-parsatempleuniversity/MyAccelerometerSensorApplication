@@ -11,6 +11,8 @@ When the user uses the app, it can see the x, y, and z values since they are bei
 
 The user has the ability to swipe across the touch screen. The user will be able to swipe to the right and the message: "You have answered the call." will be displayed to the user. Also, the user will be able to swipe to the left and the message: "You have rejected the call." will be displayed to the user.
 
+## Insights or Findings
+
 ## Android Accelerometer Sensor - Parsa Ahmadi Nasab Emran
 Android Accelerometer Sensor Implementation
 
