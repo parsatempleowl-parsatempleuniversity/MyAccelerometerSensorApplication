@@ -1,4 +1,4 @@
-package com.example.myaccelerometersensorapplication;
+package com.example.accelerometersensor;
 
 import org.junit.Test;
 

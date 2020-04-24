@@ -1,6 +1,3 @@
 <resources>
-    <string name="app_name">MyAccelerometerSensorApplication</string>
-    <string name="x_value">x value</string>
-    <string name="y_value">y value</string>
-    <string name="z_value">z value</string>
+    <string name="app_name">AccelerometerSensor</string>
 </resources>

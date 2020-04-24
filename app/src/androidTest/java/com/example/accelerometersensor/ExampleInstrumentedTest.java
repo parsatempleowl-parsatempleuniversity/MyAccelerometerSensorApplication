@@ -1,4 +1,4 @@
-package com.example.myaccelerometersensorapplication;
+package com.example.accelerometersensor;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.myaccelerometersensorapplication", appContext.getPackageName());
+        assertEquals("com.example.accelerometersensor", appContext.getPackageName());
     }
 }

@@ -1,14 +1,20 @@
-package com.example.myaccelerometersensorapplication;
+package com.example.accelerometersensor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,30 +28,33 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
-import static java.lang.Thread.sleep;
+import java.util.Objects;
+
+import static java.lang.Thread.*;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     private static final String TAG = "MainActivity";
     SensorManager sensorManager;
     Sensor accelerometerSensor;
+    Sensor accelerometerSensor1;
 
-    TextView xValue;
-    TextView yValue;
-    TextView zValue;
+   public static TextView xValue;
+    public static  TextView yValue;
+    public static TextView zValue;
 
-    private LineChart lineChart;
-    private Thread thread;
-    private Context context;
-
+    public static  LineChart lineChart;
+    Thread thread;
     boolean plotData = true;
+    Context context;
+    RelativeLayout rl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         xValue = findViewById(R.id.xValue);
-        RelativeLayout rl = findViewById(R.id.rl);
+        rl = findViewById(R.id.rl);
         xValue.setBackgroundColor(Color.GREEN);
         yValue = findViewById(R.id.yValue);
         yValue.setBackgroundColor(Color.GREEN);
@@ -54,6 +63,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         context=MainActivity.this;
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        accelerometerSensor =sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        accelerometerSensor1 = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
+
+//        sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
 
         if(accelerometerSensor != null) {
             sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
@@ -98,6 +112,24 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         startPlot();
 
+
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            boolean retVal = true;
+//            retVal = Settings.System.canWrite(this);
+//            if (retVal == false) {
+//                if (!Settings.System.canWrite(getApplicationContext())) {
+//
+//                    Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS, Uri.parse("package:" + getPackageName()));
+//                    Toast.makeText(getApplicationContext(), "Please, allow system settings for automatic logout ", Toast.LENGTH_LONG).show();
+//                    startActivityForResult(intent, 200);
+//                }
+//            }else {
+//                Toast.makeText(getApplicationContext(), "You are not allowed to wright ", Toast.LENGTH_LONG).show();
+//            }
+//        }
+
+
         rl.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
             public void onSwipeTop() {
                 Toast.makeText(context, "top", Toast.LENGTH_SHORT).show();
@@ -113,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
 
         });
+
 
     }
 
@@ -184,7 +217,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         yValue.setText("Y Value: " + event.values[1]);
         zValue.setText("Z Value: " + event.values[2]);
 
+//        if(plotData) {
+//        new CreateChartClass().create(event);
         addEntry(event);
+//            plotData = false;
+//        }
     }
 
 
@@ -207,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onResume() {
         super.onResume();
-        sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, accelerometerSensor1, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
@@ -238,4 +275,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         set.setCubicIntensity(0.2f);
         return  set;
     }
-}
+
+
+
+
+
+
+
+
+
+    }

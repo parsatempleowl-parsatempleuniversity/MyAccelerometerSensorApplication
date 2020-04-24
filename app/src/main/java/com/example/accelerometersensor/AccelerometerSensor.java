@@ -1,15 +1,18 @@
-package com.example.myaccelerometersensorapplication;
+package com.example.accelerometersensor;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -20,7 +23,8 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
-public class AccelerometerSensor extends AppCompatActivity implements SensorEventListener {
+public class AccelerometerSensor extends AppCompatActivity implements SensorEventListener{
+
     SensorManager sensorManager;
     Sensor mAccelerometer;
     LineChart mChart;
@@ -39,7 +43,7 @@ public class AccelerometerSensor extends AppCompatActivity implements SensorEven
 
         mChart = findViewById(R.id.lineChart);
         mChart.getDescription().setEnabled(true);
-        mChart.getDescription().setText("Accel Data");
+        mChart.getDescription().setText("Real Time Accelerometer Sensor Data Plot");
 
         mChart.setTouchEnabled(true);
         mChart.setDragEnabled(false);
@@ -85,9 +89,9 @@ public class AccelerometerSensor extends AppCompatActivity implements SensorEven
                 while(true){
                     plotData = true;
                     try{
-                        Thread.sleep(10);
+                        Thread.sleep(1000);
                     }catch (InterruptedException e){
-
+                        e.printStackTrace();
                     }
                 }
             }

@@ -12,7 +12,7 @@
     tools:context="MainActivity">
 
     <com.github.mikephil.charting.charts.LineChart
-        android:layout_width="match_parent"
+        android:layout_width="360sp"
         android:layout_height="250sp"
         android:layout_marginTop="30sp"
         android:id="@+id/lineChart"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/lineChart"
         android:layout_marginTop="30sp"
-        android:text="@string/x_value" />
+        android:text="x value" />
 
     <TextView
         android:id="@+id/yValue"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/xValue"
         android:layout_marginTop="30sp"
-        android:text="@string/y_value" />
+        android:text="y value" />
 
     <TextView
         android:id="@+id/zValue"
@@ -41,6 +41,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/yValue"
         android:layout_marginTop="30sp"
-        android:text="@string/z_value" />
+        android:text="z value" />
 
 </RelativeLayout>
