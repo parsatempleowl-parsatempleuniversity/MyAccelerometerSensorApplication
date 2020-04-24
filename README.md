@@ -7,8 +7,6 @@ The goal of this Android application is to display the x, y, and z values to the
 The Hand Motion Detection feature is a touch swipe across the touchscreen. When the user swipes to the right - the message that will be displayed: "You have answered the call.". When the user swipes to the left - the message that will be displayed: "You have rejected the call.". 
 
 ## Application/Scenario
-This app is used mostly by car commuters or people who are too busy to answer the incoming calls. If someone is driving and has to keep their hands on the wheel, answering hands-free would benefit commuters greatly if they receive an important incoming call. Additionally, although just a little less important, if someone is too lazy to get up and reject a call, they could call out for their phone to reject it.
-
 When the user uses the app, it can see the x, y, and z values since they are being displayed to the user. The user can also see the x, y, and z values being plotted in real time using MPAndroidChart Library. Also, the user can see a message "You have answered the call." when it moves its hand from left to right. Also, the user can see a message "You have rejected the call." when it moves its hand from right to left.
 
 The user has the ability to swipe across the touch screen. The user will be able to swipe to the right and the message: "You have answered the call." will be displayed to the user. Also, the user will be able to swipe to the left and the message: "You have rejected the call." will be displayed to the user.
